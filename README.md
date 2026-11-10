@@ -15,3 +15,7 @@
   - Code Coverage: **100%** (`lab6/CodeCoverageTest_highway_toll.py`)
   - Branch Coverage: **100%** (`lab6/BranchCoverageTest_highway_toll.py`)
   - Full reports & terminal screenshots in [`lab6/`](lab6/README.md)
+- **[Lab 7: Fuzzing for Input Validation Bugs](lab7/README.md)**
+  - Source: `lab7/highway_toll.py`
+  - Fuzz Suite: **13/13 passing** with Hypothesis (`lab7/test_highway_toll.py`)
+  - Full before/after reports & terminal screenshots in [`lab7/`](lab7/README.md)

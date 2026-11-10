@@ -1,0 +1,28 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\anant\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7
+plugins: anyio-4.15.1, hydra-core-1.3.7, hypothesis-6.170.15, asyncio-1.4.1, cov-7.1.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items
+
+test_highway_toll.py::test_parse_plate_no_crash PASSED                   [  7%]
+test_highway_toll.py::test_trip_cost_no_crash PASSED                     [ 15%]
+test_highway_toll.py::test_axle_class_no_crash PASSED                    [ 23%]
+test_highway_toll.py::test_parse_plate_unexpected_types_no_crash PASSED  [ 30%]
+test_highway_toll.py::test_trip_cost_unexpected_types_no_crash PASSED    [ 38%]
+test_highway_toll.py::test_axle_class_unexpected_types_no_crash PASSED   [ 46%]
+test_highway_toll.py::test_parse_plate_valid_roundtrip PASSED            [ 53%]
+test_highway_toll.py::test_parse_plate_malformed_segments PASSED         [ 61%]
+test_highway_toll.py::test_trip_cost_valid_multiplication PASSED         [ 69%]
+test_highway_toll.py::test_trip_cost_rejects_negative_values PASSED      [ 76%]
+test_highway_toll.py::test_axle_class_valid_classification PASSED        [ 84%]
+test_highway_toll.py::test_axle_class_rejects_below_two PASSED           [ 92%]
+test_highway_toll.py::test_security_and_unicode_edge_cases PASSED        [100%]
+
+============================= 13 passed in 1.23s ==============================
+C:\Users\anant\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\LocalCache\local-packages\Python312\site-packages\pytest_asyncio\plugin.py:300: PytestDeprecationWarning: The configuration option "asyncio_default_fixture_loop_scope" is unset.
+The event loop scope for asynchronous fixtures will default to the "fixture" caching scope. Future versions of pytest-asyncio will default the loop scope for asynchronous fixtures to "function" scope. Set the default fixture loop scope explicitly in order to avoid unexpected behavior in the future. Valid fixture loop scopes are: "function", "class", "module", "package", "session"
+
+  warnings.warn(PytestDeprecationWarning(_DEFAULT_FIXTURE_LOOP_SCOPE_UNSET))

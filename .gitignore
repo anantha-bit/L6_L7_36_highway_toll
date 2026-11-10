@@ -3,9 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Pytest & Coverage
+# Pytest, Hypothesis & Coverage
 .cache
 .pytest_cache/
+.hypothesis/
 .coverage
 .coverage.*
 htmlcov/

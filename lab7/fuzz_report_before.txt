@@ -1,0 +1,359 @@
+============================= test session starts =============================
+platform win32 -- Python 3.12.10, pytest-9.2.0, pluggy-1.7.0 -- C:\Users\anant\AppData\Local\Microsoft\WindowsApps\PythonSoftwareFoundation.Python.3.12_qbz5n2kfra8p0\python.exe
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7
+plugins: anyio-4.15.1, hydra-core-1.3.7, hypothesis-6.170.15, asyncio-1.4.1, cov-7.1.0
+asyncio: mode=Mode.STRICT, debug=False, asyncio_default_fixture_loop_scope=None, asyncio_default_test_loop_scope=function
+collecting ... collected 13 items
+
+test_highway_toll.py::test_parse_plate_no_crash FAILED                   [  7%]
+test_highway_toll.py::test_trip_cost_no_crash FAILED                     [ 15%]
+test_highway_toll.py::test_axle_class_no_crash FAILED                    [ 23%]
+test_highway_toll.py::test_parse_plate_unexpected_types_no_crash FAILED  [ 30%]
+test_highway_toll.py::test_trip_cost_unexpected_types_no_crash FAILED    [ 38%]
+test_highway_toll.py::test_axle_class_unexpected_types_no_crash FAILED   [ 46%]
+test_highway_toll.py::test_parse_plate_valid_roundtrip PASSED            [ 53%]
+test_highway_toll.py::test_parse_plate_malformed_segments FAILED         [ 61%]
+test_highway_toll.py::test_trip_cost_valid_multiplication PASSED         [ 69%]
+test_highway_toll.py::test_trip_cost_rejects_negative_values FAILED      [ 76%]
+test_highway_toll.py::test_axle_class_valid_classification PASSED        [ 84%]
+test_highway_toll.py::test_axle_class_rejects_below_two FAILED           [ 92%]
+test_highway_toll.py::test_security_and_unicode_edge_cases FAILED        [100%]
+
+================================== FAILURES ===================================
+__________________________ test_parse_plate_no_crash __________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 18, in test_parse_plate_no_crash
+  |     @settings(max_examples=200)
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 22, in test_parse_plate_no_crash
+    |     result = parse_plate(s)
+    |              ^^^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 2, in parse_plate
+    |     state, district, series, number = plate.split('-')
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 4, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 24, in test_parse_plate_no_crash
+    |     assert False, f"parse_plate crashed with: {e}"
+    | AssertionError: parse_plate crashed with: not enough values to unpack (expected 4, got 1)
+    | assert False
+    | Failing test case: test_parse_plate_no_crash(
+    |     s='',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 22, in test_parse_plate_no_crash
+    |     result = parse_plate(s)
+    |              ^^^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 2, in parse_plate
+    |     state, district, series, number = plate.split('-')
+    |                                       ^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 24, in test_parse_plate_no_crash
+    |     assert False, f"parse_plate crashed with: {e}"
+    | AssertionError: parse_plate crashed with: 'NoneType' object has no attribute 'split'
+    | assert False
+    | Failing test case: test_parse_plate_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+___________________________ test_trip_cost_no_crash ___________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 34, in test_trip_cost_no_crash
+  |     @settings(max_examples=200)
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 38, in test_trip_cost_no_crash
+    |     result = trip_cost(s)
+    |              ^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 7, in trip_cost
+    |     return int(count) * int(rate)
+    |            ^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 40, in test_trip_cost_no_crash
+    |     assert False, f"trip_cost crashed with: {e}"
+    | AssertionError: trip_cost crashed with: invalid literal for int() with base 10: ''
+    | assert False
+    | Failing test case: test_trip_cost_no_crash(
+    |     s='X',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 38, in test_trip_cost_no_crash
+    |     result = trip_cost(s)
+    |              ^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 6, in trip_cost
+    |     count, rate = text.lower().split('x')
+    |     ^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 40, in test_trip_cost_no_crash
+    |     assert False, f"trip_cost crashed with: {e}"
+    | AssertionError: trip_cost crashed with: not enough values to unpack (expected 2, got 1)
+    | assert False
+    | Failing test case: test_trip_cost_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 38, in test_trip_cost_no_crash
+    |     result = trip_cost(s)
+    |              ^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 6, in trip_cost
+    |     count, rate = text.lower().split('x')
+    |                   ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'lower'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 40, in test_trip_cost_no_crash
+    |     assert False, f"trip_cost crashed with: {e}"
+    | AssertionError: trip_cost crashed with: 'NoneType' object has no attribute 'lower'
+    | assert False
+    | Failing test case: test_trip_cost_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+__________________________ test_axle_class_no_crash ___________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 46, in test_axle_class_no_crash
+  |     @settings(max_examples=200)
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 50, in test_axle_class_no_crash
+    |     result = axle_class(s)
+    |              ^^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 10, in axle_class
+    |     n = int(axles)
+    |         ^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 52, in test_axle_class_no_crash
+    |     assert False, f"axle_class crashed with: {e}"
+    | AssertionError: axle_class crashed with: invalid literal for int() with base 10: ''
+    | assert False
+    | Failing test case: test_axle_class_no_crash(
+    |     s='',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 50, in test_axle_class_no_crash
+    |     result = axle_class(s)
+    |              ^^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 10, in axle_class
+    |     n = int(axles)
+    |         ^^^^^^^^^^
+    | TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 52, in test_axle_class_no_crash
+    |     assert False, f"axle_class crashed with: {e}"
+    | AssertionError: axle_class crashed with: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
+    | assert False
+    | Failing test case: test_axle_class_no_crash(
+    |     s=None,
+    | )
+    +------------------------------------
+_________________ test_parse_plate_unexpected_types_no_crash __________________
+test_highway_toll.py:64: in test_parse_plate_unexpected_types_no_crash
+    result = parse_plate(val)
+             ^^^^^^^^^^^^^^^^
+highway_toll.py:2: in parse_plate
+    state, district, series, number = plate.split('-')
+                                      ^^^^^^^^^^^
+E   AttributeError: 'int' object has no attribute 'split'
+
+During handling of the above exception, another exception occurred:
+test_highway_toll.py:61: in test_parse_plate_unexpected_types_no_crash
+    def test_parse_plate_unexpected_types_no_crash(val):
+                   ^^^
+test_highway_toll.py:66: in test_parse_plate_unexpected_types_no_crash
+    assert False, f"parse_plate crashed on {type(val).__name__}: {e}"
+E   AssertionError: parse_plate crashed on int: 'int' object has no attribute 'split'
+E   assert False
+E   Failing test case: test_parse_plate_unexpected_types_no_crash(
+E       val=0,
+E   )
+__________________ test_trip_cost_unexpected_types_no_crash ___________________
+test_highway_toll.py:74: in test_trip_cost_unexpected_types_no_crash
+    result = trip_cost(val)
+             ^^^^^^^^^^^^^^
+highway_toll.py:6: in trip_cost
+    count, rate = text.lower().split('x')
+                  ^^^^^^^^^^
+E   AttributeError: 'int' object has no attribute 'lower'
+
+During handling of the above exception, another exception occurred:
+test_highway_toll.py:71: in test_trip_cost_unexpected_types_no_crash
+    def test_trip_cost_unexpected_types_no_crash(val):
+                   ^^^
+test_highway_toll.py:76: in test_trip_cost_unexpected_types_no_crash
+    assert False, f"trip_cost crashed on {type(val).__name__}: {e}"
+E   AssertionError: trip_cost crashed on int: 'int' object has no attribute 'lower'
+E   assert False
+E   Failing test case: test_trip_cost_unexpected_types_no_crash(
+E       val=0,
+E   )
+__________________ test_axle_class_unexpected_types_no_crash __________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 81, in test_axle_class_unexpected_types_no_crash
+  |     def test_axle_class_unexpected_types_no_crash(val):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 84, in test_axle_class_unexpected_types_no_crash
+    |     result = axle_class(val)
+    |              ^^^^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 10, in axle_class
+    |     n = int(axles)
+    |         ^^^^^^^^^^
+    | TypeError: int() argument must be a string, a bytes-like object or a real number, not 'list'
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 86, in test_axle_class_unexpected_types_no_crash
+    |     assert False, f"axle_class crashed on {type(val).__name__}: {e}"
+    | AssertionError: axle_class crashed on list: int() argument must be a string, a bytes-like object or a real number, not 'list'
+    | assert False
+    | Failing test case: test_axle_class_unexpected_types_no_crash(
+    |     val=[],
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 90, in test_axle_class_unexpected_types_no_crash
+    |     assert result is None
+    | AssertionError: assert 'truck' is None
+    | Failing test case: test_axle_class_unexpected_types_no_crash(
+    |     val=0,
+    | )
+    +------------------------------------
+_____________________ test_parse_plate_malformed_segments _____________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 110, in test_parse_plate_malformed_segments
+  |     def test_parse_plate_malformed_segments(parts):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 120, in test_parse_plate_malformed_segments
+    |     assert result is None
+    | AssertionError: assert ('', 0, 0) is None
+    | Failing test case: test_parse_plate_malformed_segments(
+    |     parts=['', '0', '', '0'],
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 117, in test_parse_plate_malformed_segments
+    |     result = parse_plate(plate)
+    |              ^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 3, in parse_plate
+    |     return state.upper(), int(district), int(number)
+    |                           ^^^^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: ''
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 119, in test_parse_plate_malformed_segments
+    |     assert False, f"parse_plate crashed on malformed plate {plate!r}: {e}"
+    | AssertionError: parse_plate crashed on malformed plate '---': invalid literal for int() with base 10: ''
+    | assert False
+    | Failing test case: test_parse_plate_malformed_segments(
+    |     parts=['', '', '', ''],
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 117, in test_parse_plate_malformed_segments
+    |     result = parse_plate(plate)
+    |              ^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\highway_toll.py", line 2, in parse_plate
+    |     state, district, series, number = plate.split('-')
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 4, got 1)
+    | 
+    | During handling of the above exception, another exception occurred:
+    | 
+    | Traceback (most recent call last):
+    |   File "C:\Users\anant\.gemini\antigravity\scratch\L6_L7_36_highway_toll\lab7\test_highway_toll.py", line 119, in test_parse_plate_malformed_segments
+    |     assert False, f"parse_plate crashed on malformed plate {plate!r}: {e}"
+    | AssertionError: parse_plate crashed on malformed plate '': not enough values to unpack (expected 4, got 1)
+    | assert False
+    | Failing test case: test_parse_plate_malformed_segments(
+    |     parts=[],
+    | )
+    +------------------------------------
+___________________ test_trip_cost_rejects_negative_values ____________________
+test_highway_toll.py:134: in test_trip_cost_rejects_negative_values
+    count=st.integers(min_value=1, max_value=1000),
+               ^^^
+test_highway_toll.py:139: in test_trip_cost_rejects_negative_values
+    assert trip_cost(f"-{count}x{rate}") is None
+E   AssertionError: assert -1 is None
+E    +  where -1 = trip_cost('-1x1')
+E   Failing test case: test_trip_cost_rejects_negative_values(
+E       count=1,
+E       rate=1,
+E   )
+______________________ test_axle_class_rejects_below_two ______________________
+test_highway_toll.py:153: in test_axle_class_rejects_below_two
+    def test_axle_class_rejects_below_two(n):
+                   ^^^
+test_highway_toll.py:155: in test_axle_class_rejects_below_two
+    assert axle_class(str(n)) is None
+E   AssertionError: assert 'truck' is None
+E    +  where 'truck' = axle_class('0')
+E    +    where '0' = str(0)
+E   Failing test case: test_axle_class_rejects_below_two(
+E       n=0,
+E   )
+____________________ test_security_and_unicode_edge_cases _____________________
+test_highway_toll.py:162: in test_security_and_unicode_edge_cases
+    assert parse_plate(f"KA-05-AB-{huge_digits}") is None
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+highway_toll.py:3: in parse_plate
+    return state.upper(), int(district), int(number)
+                                         ^^^^^^^^^^^
+E   ValueError: Exceeds the limit (4300 digits) for integer string conversion: value has 5000 digits; use sys.set_int_max_str_digits() to increase the limit
+=========================== short test summary info ===========================
+FAILED test_highway_toll.py::test_parse_plate_no_crash - ExceptionGroup: Hypo...
+FAILED test_highway_toll.py::test_trip_cost_no_crash - ExceptionGroup: Hypoth...
+FAILED test_highway_toll.py::test_axle_class_no_crash - ExceptionGroup: Hypot...
+FAILED test_highway_toll.py::test_parse_plate_unexpected_types_no_crash - Ass...
+FAILED test_highway_toll.py::test_trip_cost_unexpected_types_no_crash - Asser...
+FAILED test_highway_toll.py::test_axle_class_unexpected_types_no_crash - Exce...
+FAILED test_highway_toll.py::test_parse_plate_malformed_segments - ExceptionG...
+FAILED test_highway_toll.py::test_trip_cost_rejects_negative_values - Asserti...
+FAILED test_highway_toll.py::test_axle_class_rejects_below_two - AssertionErr...
+FAILED test_highway_toll.py::test_security_and_unicode_edge_cases - ValueErro...
+======================== 10 failed, 3 passed in 1.22s =========================
